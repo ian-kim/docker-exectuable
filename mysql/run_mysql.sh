@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
-PWD=`pwd`
+PWD=$(pwd)
 echo $PWD
 
 function start_mysql() {
-  docker run --name=mysql1 --env-file .env -p 3306:3306 --rm -d mysql/mysql-server
+  docker run --name=mysql1 --env-file .env -p 3306:3306 --volume=$PWD/backup:/var/lib/mysq --rm -d mysql/mysql-server
 }
 
 function stop_mysql() {
